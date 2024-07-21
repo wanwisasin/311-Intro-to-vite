@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { Event } from '@/type'
 
 defineProps<{
@@ -18,12 +19,12 @@ defineProps<{
 </script>
 
 <template>
-  <RouterLink :to="{ name: 'event-detail-view', params: { id: event.id } }">
+  <div class="event-class">
     <div class="event-card">
       <h2>{{ event.title }}</h2>
       <span>@ {{ event.time }} on {{ event.date }}</span>
     </div>
-  </RouterLink>
+  </div>
 </template>
 
 <style scoped>
