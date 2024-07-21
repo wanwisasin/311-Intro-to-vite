@@ -7,7 +7,7 @@ import StudentService from '@/services/StudentService'
 const students = ref<Student[]>([])
 
 onMounted(() => {
-  StudentService.get()
+  StudentService.getEvents()
     .then((response) => {
       students.value = response.data
     })
