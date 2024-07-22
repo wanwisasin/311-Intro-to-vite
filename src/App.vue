@@ -1,7 +1,17 @@
+// App.vue
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
+import { ref, watch } from 'vue'
+
+const route = useRoute()
+const router = useRouter()
+const perPage = ref(parseInt(route.query.perPage?.toString() || '2'))
+
+watch(perPage, (newPerPage) => {
+  router.push({ name: 'event-list-view', query: { ...route.query, perPage: newPerPage } })
+})
 </script>
-<!-- 4.1 -->
+
 <template>
   <div id="layout">
     <header>
@@ -14,7 +24,12 @@ import { RouterLink, RouterView } from 'vue-router'
       </div>
     </header>
 
-    <RouterView />
+    <main>
+      <label for="perPage">Event per page:</label>
+      <input id="perPage" type="number" v-model="perPage" min="1" />
+
+      <RouterView />
+    </main>
   </div>
 </template>
 
@@ -41,5 +56,17 @@ nav a.router-link-exact-active {
 }
 h2 {
   font-size: 20px;
+}
+
+main {
+  padding: 20px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input[type='number'] {
+  width: 50px;
 }
 </style>
