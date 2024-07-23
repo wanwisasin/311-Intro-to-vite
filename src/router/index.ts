@@ -5,6 +5,7 @@ import EventRegisterView from '@/views/event/RegisterView.vue'
 import EventEditView from '@/views/event/EditView.vue'
 import EventLayoutView from '@/views/event/LayoutView.vue'
 import AboutView from '@/views/AboutView.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
 import StudentListView from '@/views/StudentListView.vue'
 
 const router = createRouter({
@@ -49,6 +50,17 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: AboutView
+    },
+    {
+      path: '/404/:resource',
+      name: '404-resource-view',
+      component: NotFoundView,
+      props: true
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'not-found',
+      component: NotFoundView
     },
     {
       path: '/students',
