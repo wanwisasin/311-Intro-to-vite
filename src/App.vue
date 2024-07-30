@@ -19,7 +19,8 @@ watch(perPage, (newPerPage) => {
         <nav>
           <RouterLink :to="{ name: 'event-list-view' }">Event</RouterLink> |
           <RouterLink :to="{ name: 'about' }">About</RouterLink> |
-          <RouterLink :to="{ name: 'student' }">Students</RouterLink>
+          <RouterLink :to="{ name: 'student' }">Students</RouterLink> |
+          <RouterLink :to="{ name: 'passenger' }">Passenger</RouterLink>
         </nav>
       </div>
     </header>

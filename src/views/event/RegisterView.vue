@@ -11,8 +11,6 @@ const props = defineProps<{
 const { event } = toRefs(props)
 const router = useRouter()
 const register = () => {
-  //if the gistertration API call sccessful
-  //Push back to the event details view
   router.push({ name: 'event-detail-view' })
 }
 </script>
