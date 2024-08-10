@@ -10,12 +10,20 @@ const { message } = storeToRefs(store)
   <div class="text-center font-sans text-gray-700 antialias">
     <header>
       <div class="wrapper">
-        <nav>
-          <RouterLink :to="{ name: 'event-list-view', query: { perPage: 2, page: 1 } }"
+        <nav class="py-6">
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'event-list-view', query: { perPage: 2, page: 1 } }"
             >Event</RouterLink
           >
           |
-          <RouterLink :to="{ name: 'about' }">About</RouterLink>
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'about' }"
+            >About</RouterLink
+          >
         </nav>
       </div>
     </header>
@@ -28,14 +36,14 @@ nav {
   padding: 30px;
 }
 
-nav a {
+/* nav a {
   font-weight: bold;
   color: #2c3e50;
-}
+} */
 
-nav a.router-link-exact-active {
+/* nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 
 h2 {
   font-size: 20px;
