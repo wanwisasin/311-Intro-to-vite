@@ -4,12 +4,12 @@ import { useMessageStore } from './stores/message'
 import { storeToRefs } from 'pinia'
 const store = useMessageStore()
 const { message } = storeToRefs(store)
-import { SpeedInsights } from '@vercel/speed-insights/next'
+// import { SpeedInsights } from '@vercel/speed-insights/next'
 </script>
 
 <template>
   <div>
-    <SpeedInsights />
+    <!-- <SpeedInsights /> -->
     <div class="text-center font-sans text-gray-700 antialias">
       <header>
         <div id="flashMessage" class="animate-fade" v-if="message">
