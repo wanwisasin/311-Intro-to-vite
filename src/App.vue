@@ -6,38 +6,35 @@ import SpeedInsights from '@vercel/speed-insights'
 
 const store = useMessageStore()
 const { message } = storeToRefs(store)
-// import { SpeedInsights } from '@vercel/speed-insights/next'
 </script>
 
 <template>
-  <div>
-    <SpeedInsights />
-    <div class="text-center font-sans text-gray-700 antialias">
-      <header>
-        <div id="flashMessage" class="animate-fade" v-if="message">
-          <h4>{{ message }}</h4>
-        </div>
-        <h1>Deploy with Vercel</h1>
-        <div class="wrapper">
-          <nav class="p-[30px]">
-            <RouterLink
-              class="font-bold text-gray-700"
-              exact-active-class="text-green-500"
-              :to="{ name: 'event-list-view', query: { perPage: 2, page: 1 } }"
-              >Event</RouterLink
-            >
-            |
-            <RouterLink
-              class="font-bold text-gray-700"
-              exact-active-class="text-green-500"
-              :to="{ name: 'about' }"
-              >About</RouterLink
-            >
-          </nav>
-        </div>
-      </header>
-      <RouterView />
-    </div>
+  <SpeedInsights />
+  <div class="text-center font-sans text-gray-700 antialias">
+    <header>
+      <div id="flashMessage" class="animate-fade" v-if="message">
+        <h4>{{ message }}</h4>
+      </div>
+      <h1>Deploy with Vercel</h1>
+      <div class="wrapper">
+        <nav class="p-[30px]">
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'event-list-view', query: { perPage: 2, page: 1 } }"
+            >Event</RouterLink
+          >
+          |
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'about' }"
+            >About</RouterLink
+          >
+        </nav>
+      </div>
+    </header>
+    <RouterView />
   </div>
 </template>
 
