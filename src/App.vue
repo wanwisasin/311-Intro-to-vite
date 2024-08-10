@@ -1,48 +1,29 @@
-// App.vue
 <script setup lang="ts">
-import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
-import { ref, watch } from 'vue'
-
-const route = useRoute()
-const router = useRouter()
-const perPage = ref(parseInt(route.query.perPage?.toString() || '2'))
-
-watch(perPage, (newPerPage) => {
-  router.push({ name: 'event-list-view', query: { ...route.query, perPage: newPerPage } })
-})
+import { RouterLink, RouterView } from 'vue-router'
+import { useMessageStore } from './stores/message'
+import { storeToRefs } from 'pinia'
+const store = useMessageStore()
+const { message } = storeToRefs(store)
 </script>
 
 <template>
-  <div id="layout">
+  <div class="text-center font-sans text-gray-700 antialias">
     <header>
       <div class="wrapper">
         <nav>
-          <RouterLink :to="{ name: 'event-list-view' }">Event</RouterLink> |
-          <RouterLink :to="{ name: 'about' }">About</RouterLink> |
-          <RouterLink :to="{ name: 'student' }">Students</RouterLink> |
-          <RouterLink :to="{ name: 'passenger' }">Passenger</RouterLink>
+          <RouterLink :to="{ name: 'event-list-view', query: { perPage: 2, page: 1 } }"
+            >Event</RouterLink
+          >
+          |
+          <RouterLink :to="{ name: 'about' }">About</RouterLink>
         </nav>
       </div>
     </header>
-
-    <main>
-      <label for="perPage">Event per page:</label>
-      <input id="perPage" type="number" v-model="perPage" min="1" />
-
-      <RouterView />
-    </main>
+    <RouterView />
   </div>
 </template>
 
 <style>
-#layout {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
 nav {
   padding: 30px;
 }
@@ -55,19 +36,9 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+
 h2 {
   font-size: 20px;
-}
-
-main {
-  padding: 20px;
-}
-
-label {
-  margin-right: 10px;
-}
-
-input[type='number'] {
-  width: 50px;
+  margin-top: 0;
 }
 </style>
