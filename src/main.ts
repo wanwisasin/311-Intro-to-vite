@@ -11,5 +11,4 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 inject()
-
 app.mount('#app')
