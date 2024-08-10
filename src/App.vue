@@ -9,8 +9,11 @@ const { message } = storeToRefs(store)
 <template>
   <div class="text-center font-sans text-gray-700 antialias">
     <header>
+      <div id="flashMessage" class="animate-fade" v-if="message">
+        <h4>{{ message }}</h4>
+      </div>
       <div class="wrapper">
-        <nav class="py-6">
+        <nav class="p-[30px]">
           <RouterLink
             class="font-bold text-gray-700"
             exact-active-class="text-green-500"
@@ -32,9 +35,9 @@ const { message } = storeToRefs(store)
 </template>
 
 <style>
-nav {
+/* nav {
   padding: 30px;
-}
+} */
 
 /* nav a {
   font-weight: bold;
@@ -44,9 +47,4 @@ nav {
 /* nav a.router-link-exact-active {
   color: #42b983;
 } */
-
-h2 {
-  font-size: 20px;
-  margin-top: 0;
-}
 </style>
