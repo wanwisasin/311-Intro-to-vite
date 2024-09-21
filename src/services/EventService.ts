@@ -1,7 +1,8 @@
 import axios from 'axios'
+import type { Event, Organizer } from '@/types'
 
 const apiClient = axios.create({
-  baseURL: 'https://my-json-server.typicode.com/wanwisasin/311-Lab02-Intro-to-vite',
+  baseURL: import.meta.env.VITE_BACKEND_URL,
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -11,9 +12,15 @@ const apiClient = axios.create({
 
 export default {
   getEvents(perPage: Number, page: Number) {
-    return apiClient.get(`/events?_limit=${perPage}&_page=${page}`)
+    return apiClient.get('/events?_limit=' + perPage + '&_page=' + page)
   },
   getEvent(id: number) {
     return apiClient.get('/events/' + id)
+  },
+  saveEvent(event: Event) {
+    return apiClient.post('/events', event)
+  },
+  saveOrganizer(organizer: Organizer) {
+    return apiClient.post('/organizers', organizer)
   }
 }
