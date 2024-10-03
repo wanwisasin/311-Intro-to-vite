@@ -18,6 +18,7 @@ const { event } = toRefs(props)
   </div>
   <p>{{ event.title }} @ {{ event.location }}</p>
   <p>{{ event.description }}</p>
+  <p>{{ event.organizer }}</p>
 </template>
 
 <!-- <style>
